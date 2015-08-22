@@ -1,0 +1,160 @@
+
+body {
+    background-color: rgb(240,240,240);
+}
+
+#date-and-time-panel {
+    width: 100%;
+    height: 75%;
+}
+
+/* div in which all month divs are held */
+#calendar-container {
+    margin: 0 center;
+	display: inline-block;
+	width: 50%;
+	height: 25%;
+	min-width: 25%;
+	background-color: rgb(240,240,240);
+}
+
+#select-time-pane {
+    height: 10%;
+    background-color: grey;
+}
+
+#fill-out-pane {
+    background-color: rgb(240,240,240);
+    height: 100%;
+}
+
+.intermediate-options-pane {
+    margin-top: 1%;
+    margin-bottom:1%;
+    background-color:green;
+}
+
+
+
+.time_slot_picker {
+    background-color: rgb(223, 223, 223);
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    height: 100%;
+    float: left;
+    width: 4.15%;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.time_slot_number{
+    font-family: sans-serif;
+	font-size: 200%;
+	font-weight: italic;
+    text-align: center;
+}
+
+.time_slot_day{
+    font-family: sans-serif;
+	font-size: 200%;
+    text-align: center;
+}
+#sharing-pane {
+    background-color: rgb(240,240,240);
+    height: 100%;
+}
+
+.slick-list {
+    width: 100%;
+    margin-left: 50%
+}
+
+/* a single month div */
+.month-block-create {
+    width: 500px;
+	height: 500px;
+	background-color: rgb(240,240,240);
+}
+
+[kalendar] .c-grid {
+    left: 6%;
+}
+
+/* div holding Month Year */
+.month-block-create .cm-view {
+	background-color: rgb(240,240,240);
+    margin-bottom: 5%;
+}
+
+/* text for the Month Year */
+.month-block-create .cm-view p {
+	color: black;
+	font-weight: 400;
+	font-size: 2em;
+	font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	/*margin-top: 5px;*/
+	text-align: center;
+}
+
+
+/* a single day block */
+.month-block-create .c-grid .c-row .c-day{
+    border-style: solid;
+    border-color: rgb(154, 206, 103);
+	width: 12%;
+	height: 90%;
+    color: black;
+    background-color: rgb(240,240,240);
+}
+
+.month-block-create .c-grid .c-row .c-day .date-holder{
+    margin: auto;
+    width: 25%;
+    position: relative;
+    right: 0;
+    bottom: 0;
+    top: 20%;
+}
+
+/* apply to all contents of date holder divs */
+/*.month-block-create .c-grid .c-row .c-day .date-holder{
+
+	width: 16px;
+	height: 16px;
+	margin: 3px;
+	right: 0px;
+	bottom: 0px;
+	text-align: center;
+	color: black;
+	font-family: sans-serif;
+	font-size: 0.9em;
+	font-weight: 400;
+}*/
+
+.selected-timeslot {
+    background-color: green;
+}
+
+.selected {
+    background-color: rgb(154, 206, 103);
+}
+
+
+/* represent divs holding days of the week, ex) S,M,T... */
+.month-block-create .c-grid .c-row .c-day.c-l .date-holder {
+	color: grey;
+}
+
+/* apply only to row containing the days of the week, want a border */
+/*.month-block-create .c-grid .c-row:first-child {
+	border-bottom-width: 1px;
+	border-bottom-style:inset;
+	border-bottom-color:rgb(200,200,200);
+}*/
+
+/* represent the divs used to represent day in prev and next month */
+.month-block-create .c-grid .c-row .c-day.other-month .date-holder {
+	color: rgb(200,200,200);
+}

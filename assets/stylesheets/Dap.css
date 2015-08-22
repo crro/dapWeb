@@ -1,0 +1,397 @@
+
+/*
+1 day, multiple days
+1 hour, 24 hours
+expandable
+scrollable window
+javascript interaction
+*/
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+html, body
+    {
+        height:100%;
+        width: 100%;
+    }
+
+#rightpanel
+    {
+    	float: right;
+        margin: auto;
+        width: 80%;
+        overflow: scroll;
+    }
+
+/* located in class dates, each cell corresponds to a day of the week*/
+.dateCell
+    {
+        color: black;
+        font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        font-size: 1em;
+        text-align: center;
+        display: table-cell;
+        width: 120px;
+        height: 20px;
+        /*background-color: white !important;*/
+        padding-top:10px;
+        padding-bottom: 5px;
+    }
+
+/* -------------------------------------------------------------------------- Calendar */
+.fullCal
+    {
+        display: block;
+        /*background-color: #C24445;*/
+        background-color: rgb(240,240,240);
+        /*overflow: scroll;*/
+        margin-right: auto;
+        margin-left: auto;
+        padding-top: 7%;
+        height: 100%;
+        width: 80%;
+
+        /*height: 100%;
+        display: inline-flex;
+        float:left;
+        margin-bottom: 40px;
+        width: 100%;*/
+    }
+/* -------------------------------------------------------------------------- Hour Column (far left) */
+.hourCol
+    {
+        display: table-column;
+        float: left;
+        /*background-color: white !important;*/
+        padding-top:2%;
+        padding-bottom:10px;
+        min-width: 70px;
+    }
+
+.cell > p
+    {
+        font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+        font-size: .8em;
+        margin-right: 10px;
+    }
+
+/* -------------------------------------------------------------------------- Normal Columns and Cells */
+.col
+    {
+        display: table-column;
+        height: 100%;
+        float: left;
+        width: 120px;
+        min-width: 120px;
+
+    }
+
+.cell
+    {
+        text-align: right;
+        height: 40px;
+        width: 100%;
+    }
+
+.cell.norm {
+    background-color: #C24445;
+}
+
+
+/* -------------------------------------------------------------------------- Time Slots */
+.slot
+    {
+        height: 48%;
+        width: 80%;
+        margin: auto;
+    }
+
+.slot1
+    {
+        border-top: 1px solid #FFE1C8;
+    }
+
+.slot2
+    {
+        border-top: 1px solid #E17D7D;
+    }
+
+.slot:hover
+    {
+        background-color: #c12c2c;
+    }
+
+.slotBottom
+	{
+        border-bottom: 2px solid white !important;
+        border-right: 2px solid white !important;
+        border-left: 2px solid white !important;
+        border-bottom-right-radius: 15px !important;
+        border-bottom-left-radius: 15px !important;
+	}
+
+.slotBottom:hover
+	{
+		background-color: #c12c2c;
+        border-bottom: 2px solid white;
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+	}
+
+.slotTop
+	{
+		overflow:hidden;
+    	text-overflow:ellipsis;
+    	color:white;
+    	text-align:left;
+        border-top: 2px solid white !important;
+        border-right: 2px solid white !important;
+        border-left: 2px solid white !important;
+        border-top-right-radius: 15px !important;
+        border-top-left-radius: 15px !important;
+	}
+
+.slotTop p
+	{
+		margin-left:7px;
+		margin-top:3px;
+		font-size:12px;
+	}
+
+.slotTop:hover
+	{
+		overflow:hidden;
+    	text-overflow:ellipsis;
+		background-color: #c12c2c;
+        border-top: 2px solid white;
+        border-right: 2px solid white;
+        border-left: 2px solid white;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+	}
+
+.slotMid
+	{
+		border-right: 2px solid white !important;
+    	border-left: 2px solid white !important;
+	}
+
+.slotMid:hover
+	{
+		background-color: #c12c2c;
+		border-right: 2px solid white;
+    	border-left: 2px solid white;
+	}
+
+.selected-timeslot
+    {
+        background-color: rgb(55, 170, 70);
+        border-top-right-radius: 5px 5px;
+        border-top-left-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+    }
+
+.selected-timeslot:hover
+    {
+        background-color: rgb(55,150,70);
+    }
+
+.selectAll
+    {
+        height:18px;
+        width: 100%;
+        background-color: #C24445;
+        /*border-top-right-radius: 5px 5px;
+        border-top-left-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;*/
+    }
+
+.selectAll:hover
+    {
+        background-color:#C2C2C2;
+    }
+
+.selectAllSelected
+    {
+        background-color: #C24445;
+    }
+
+/* -------------------------------------------------------------------------- Left Panel */
+#leftpanel
+    {
+        background-color: #F0F0F0;
+        height: 100%;
+        width: 240px;
+        float: left;
+        position: fixed;
+    }
+
+#logo-wrapper
+{
+
+    width: 240px;
+    height: 60px;
+    background-color: #F0F0F0;
+
+}
+
+#logo
+{
+    width: 85px;
+    height: 40px;
+    margin: auto;
+    padding-top: 10px;
+}
+
+#message
+{
+    width: 210px;
+    margin: auto;
+    height: auto;
+    margin-bottom: 20px;
+    background-color: rgb(230,230,230);
+}
+
+#message p {
+
+    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+#message p:first-child {
+
+    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+    padding: 10px;
+    padding-bottom: 5px;
+}
+
+.sendbutton
+    {
+        height: 35px;
+        width: 200px;
+        background-color: rgb(55, 170, 70);
+        margin:auto;
+        font-family: monospace;
+        font-size: 1.0em;
+        color: white;
+        text-align: center;
+        border-radius: 3px;
+    }
+
+/* center the text contained by button*/
+.sendbutton p
+{
+    padding: 10px;
+    font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+}
+
+.sendbutton:hover
+    {
+        background-color: rgb(27,148,47);
+        color: rgb(239,239,239);
+    }
+
+.sendbutton:active
+    {
+        background-color: rgb(55,150,70);
+        color: rgb(230,230,230);
+    }
+
+
+ #load-google {
+	    height: 40px;
+        width: 200px;
+        background-color: rgb(55, 100, 170);
+        margin:auto;
+        font-family: monospace;
+        font-size: 1.4em;
+        color: white;
+        text-align: center;
+        margin-top: 20px;
+        border-top-right-radius: 5px 5px;
+        border-top-left-radius: 5px 5px;
+        border-bottom-right-radius: 5px 5px;
+        border-bottom-left-radius: 5px 5px;
+}
+
+#load-google:hover {
+        background-color: rgb(55, 0, 120);
+}
+
+ #calendar-key {
+ 	width:220px;
+ 	height:auto;
+ 	//border:3px double black;
+ 	//background-color:white;
+ 	position:relative;
+ 	top: 20px;
+    font-family: monospace;
+ 	margin:auto;
+ 	font-size:14px;
+ }
+
+ #key-data ul {
+ 	margin-left:15px;
+ 	margin-top:10px;
+ }
+
+  #key-data ul li {
+ 	border-bottom:1px solid lightgray;
+ 	min-height:30px;
+ 	border-spacing:10px;
+ }
